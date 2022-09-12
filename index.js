@@ -87,27 +87,162 @@
 
 // =======Server Express Morgan======
 
-const express = require('express');
-const morgan = require('morgan');
-const app = express();
 
-const PORT = 8081;
+// const express = require('express');
+// const morgan = require('morgan');
+// const got = require('got');
+// require('dotenv').config()
+// const app = express();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
-app.use(morgan('tiny'));
+// const { router } = require('./booksRouter');
 
-app.post('/home', (req, res) => {
-    if (!req.body.goit) {
-        return res.status(400).json({status: 'goit parameter is required'})
-    }
-    res.json({ javascript: 'object', body: req.body });
-});
+// const PORT = process.env.PORT || 8081;
+// const BASE = 'http://api.weatherbit.io/v2.0/current';
 
-app.listen(PORT, (err) => {
-    if (err) {
-        console.error('error:', err);
-    }
-    console.log(`Server is work ${PORT}`);
-});
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.static('public'));
+// app.use(morgan('tiny'));
+// // app.use('/api', router);
+
+// app.get('/api/weather', async (req, res) => {
+//     try {
+//         const response = await got(BASE, {
+//             searchParams: {
+//                 key: '036d9524dc264f01841668057487b2b0',
+//                 lat: '50.427107',
+//                 lon: '30.567437',
+//             },
+//             responseType: 'json'
+//         });
+//         res.json({response: response.body});
+//     } catch (err) {
+//         res.status(500).json({message: err.message})
+//     }
+    
+// });
+
+// app.listen(PORT, (err) => {
+//     if (err) {
+//         console.error('error:', err);
+//     }
+//     console.log(`Server is work ${PORT}`);
+// });
+
+
+
+
+
+
+// process.nextTick(function() {
+//   console.log('NextTick callback');
+// // })
+// const logger = require('./module');
+// logger.info('info function');
+// logger.log('log function');
+
+// const info = msg => {
+//   console.log(`Info: ${msg}`);
+// };
+
+// const log = msg => {
+//   console.log(`Log: ${msg}`);
+// };
+
+// module.exports = {
+//   info,
+//   log,
+// };
+
+// ===========================table===========================
+
+// const fs = require('fs').promises;
+
+// fs.readdir(__dirname)
+//   .then(files => {
+//     return Promise.all(
+//       files.map(async filename => {
+//         const stats = await fs.stat(filename);
+//         return {
+//           Name: filename,
+//           Size: stats.size,
+//           Date: stats.mtime,
+//         };
+//       }),
+//     );
+//   })
+//   .then(result => console.table(result));
+
+// =================================game===========================
+
+// const readline = require('readline');
+// const fs = require('fs').promises;
+// const { program } = require('commander');
+// require('colors');
+// program.option(
+//   '-f, --file [type]',
+//   'file for saving game results',
+//   'results.txt',
+// );
+// program.parse(process.argv);
+
+// const rl = readline.createInterface({
+//   input: process.stdin,
+//   output: process.stdout,
+// });
+
+// let count = 0;
+// const logFile = program.opts().file;
+// const mind = Math.floor(Math.random() * 10) + 1;
+
+// const isValid = value => {
+//   if (isNaN(value)) {
+//     console.log('Введіть число!'.red);
+//     return false;
+//   }
+//   if (value < 1 || value > 10) {
+//     console.log('Число має бути в діапазоні від 1 до 10'.red);
+//     return false;
+//   }
+//   return true;
+// };
+
+// const log = async data => {
+//   try {
+//     await fs.appendFile(logFile, `${data}\n`);
+//     console.log(`Вдалося зберегти результат у файл ${logFile}`.green);
+//   } catch (err) {
+//     console.log(`Не вдалося зберегти файл ${logFile}`.red);
+//   }
+// };
+
+// const game = () => {
+//   rl.question(
+//     'Введіть число від 1 до 10, щоб вгадати задумане: '.yellow,
+//     value => {
+//       let a = +value;
+//       if (!isValid(a)) {
+//         game();
+//         return;
+//       }
+//       count += 1;
+//       if (a === mind) {
+//         console.log('Вітаю Ви вгадали число за %d крок(ів)'.green, count);
+//         log(
+//           `${new Date().toLocaleDateString()}: Вітаю Ви вгадали число за ${count} крок(ів)`,
+//         ).finally(() => rl.close());
+//         return;
+//       }
+//       console.log('Ви не вгадали ще спроба'.red);
+//       game();
+//     },
+//   );
+// };
+
+// game();
+
+// app.get('/contact/:id', (req, res) => {
+//   res.send(`<h1>Contact</h1> Параметр: ${req.params.id}`);
+// });
+
+
